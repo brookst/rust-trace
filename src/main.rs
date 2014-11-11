@@ -5,22 +5,8 @@ use std::num::FloatMath;
 
 use image::GenericImage;
 
-#[deriving(Show)]
-struct Point {
-    x: f32,
-    y: f32,
-    z: f32,
-}
-
-impl Point {
-    fn mag(&self) -> f32 {
-        Float::sqrt(self.mag2())
-    }
-
-    fn mag2(&self) -> f32 {
-        self.x * self.x + self.y * self.y + self.z * self.z
-    }
-}
+use self::point::Point;
+mod point;
 
 fn sphere_intersect(ray: Point, center: Point, radius: f32) -> Option<f32> {
     let b = -(ray.x * center.x + ray.y * center.y + ray.z * center.z);
