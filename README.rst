@@ -40,4 +40,9 @@ Commit Hooks
 
 In the ``scripts/`` directory is a ``pre-commit`` hook to run the tests. Also,
 ``link_scripts.sh`` symlinks scripts into the ``.git/hooks`` directory for use
-by git.
+by git. Run as:
+
+::
+
+    $ ./scripts/link_scripts.sh
+
