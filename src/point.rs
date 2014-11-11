@@ -6,6 +6,10 @@ pub struct Point {
 }
 
 impl Point {
+    pub fn new(x: f32, y: f32, z: f32) -> Point {
+        Point{x: x, y: y, z: z}
+    }
+
     pub fn mag(&self) -> f32 {
         Float::sqrt(self.mag2())
     }
@@ -13,6 +17,12 @@ impl Point {
     pub fn mag2(&self) -> f32 {
         self.x * self.x + self.y * self.y + self.z * self.z
     }
+}
+
+#[test]
+#[allow(unused_variables)]
+fn new_init() {
+    let p = Point::new(1.0, 2.0, 3.0);
 }
 
 #[test]
