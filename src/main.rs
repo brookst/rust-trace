@@ -1,8 +1,7 @@
 extern crate image;
 
-use std::fmt::Show;
 use std::io::File;
-use std::num::{Float, FloatMath, zero};
+use std::num::FloatMath;
 
 use image::GenericImage;
 
@@ -11,23 +10,6 @@ use self::shape::sphere::Sphere;
 
 pub mod point;
 pub mod shape;
-
-#[allow(dead_code)]
-fn sphere_intersect<T: Float + Show>(ray: Point<T>, center: Point<T>, radius: T) -> Option<T> {
-    let b = -(ray.x * center.x + ray.y * center.y + ray.z * center.z);
-    let det = b * b + radius * radius - center.mag2();
-    if ray.x == zero() && ray.y == zero() {
-        println!("ray: {}", ray);
-        println!("center: {}", center);
-        println!("radius: {}", radius);
-        println!("det: {}", det);
-    }
-    if det < zero() {
-        None
-    } else {
-        Some(b - det)
-    }
-}
 
 #[allow(dead_code)]
 fn main() {
