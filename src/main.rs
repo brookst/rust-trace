@@ -7,7 +7,10 @@ use std::num::{Float, FloatMath, zero};
 use image::GenericImage;
 
 use self::point::Point;
-mod point;
+use self::shape::sphere::Sphere;
+
+pub mod point;
+pub mod shape;
 
 #[allow(dead_code)]
 fn sphere_intersect<T: Float + Show>(ray: Point<T>, center: Point<T>, radius: T) -> Option<T> {
@@ -37,6 +40,7 @@ fn main() {
 
     let pixel = image::Luma(255u8);
     let center = Point::new(25.0f32, 0.0, -300.0);
+    let sphere = Sphere::new(20.0f32, center);
 
     for x in range(0, x_size) {
         for y in range(0, y_size) {
@@ -44,7 +48,7 @@ fn main() {
             let ray = Point::new(start.x - camera.x, start.y - camera.y, start.z - camera.z);
             let amp = 1.0 / ray.mag();
             let norm_ray = Point::new(ray.x * amp, ray.y * amp, ray.z * amp);
-            match sphere_intersect(norm_ray, center, 20.0) {
+            match sphere.intersect(norm_ray) {
                 Some(_) => buffer.put_pixel(x, y, pixel),
                 None => {}
             }
