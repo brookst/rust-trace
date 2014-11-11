@@ -14,3 +14,27 @@ impl Point {
         self.x * self.x + self.y * self.y + self.z * self.z
     }
 }
+
+#[test]
+fn null_mag() {
+    let p = Point{x: 0.0, y: 0.0, z: 0.0};
+    assert!(p.mag() == 0.0);
+}
+
+#[test]
+fn single_mag() {
+    let p = Point{x: 42.0, y: 0.0, z: 0.0};
+    assert!(p.mag() == 42.0);
+}
+
+#[test]
+fn double_mag() {
+    let p = Point{x: 3.0, y: 4.0, z: 0.0};
+    assert!(p.mag() == 5.0);
+}
+
+#[test]
+fn triple_mag() {
+    let p = Point{x: 2.0, y: 3.0, z: 6.0};
+    assert!(p.mag() == 7.0);
+}

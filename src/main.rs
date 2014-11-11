@@ -8,6 +8,7 @@ use image::GenericImage;
 use self::point::Point;
 mod point;
 
+#[allow(dead_code)]
 fn sphere_intersect(ray: Point, center: Point, radius: f32) -> Option<f32> {
     let b = -(ray.x * center.x + ray.y * center.y + ray.z * center.z);
     let det = b * b + radius * radius - center.mag2();
@@ -24,6 +25,7 @@ fn sphere_intersect(ray: Point, center: Point, radius: f32) -> Option<f32> {
     }
 }
 
+#[allow(dead_code)]
 fn main() {
     let size = (80, 60);
     let (x_size, y_size) = size;
