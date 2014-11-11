@@ -1,0 +1,39 @@
+#!/bin/bash
+##
+## Run project tests
+## Tim Brooks 2014 <brooks@skoorb.net>
+##
+TEST_CMD="cargo test"
+
+# change directory to the root of the repo
+GIT_TOPLEVEL=$(git rev-parse --show-toplevel)
+cd $GIT_TOPLEVEL
+
+# stash changes and untracked files
+PRE_STASHES=$(git stash list | wc -l)
+git stash -q --keep-index --include-untracked
+POST_STASHES=$(git stash list | wc -l)
+
+# clean up trap function
+function restore() {
+    # reset anything that may have changed during the test
+    git reset --hard -q
+    # if a stash was added, pop it
+    if [ $PRE_STASHES != $POST_STASHES ]; then
+        git stash pop --index -q >/dev/null
+    fi
+}
+trap restore EXIT
+
+# run the test
+${TEST_CMD}
+tests=$?
+
+# make sure there's no whitespace errors
+git diff --check
+whitespace=$?
+
+# return code so git can accept or reject the commit
+[ $tests -ne 0 ] && exit 1
+[ $whitespace -ne 0 ] && exit 1
+exit 0
