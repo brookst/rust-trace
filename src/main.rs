@@ -1,7 +1,8 @@
 extern crate image;
 
+use std::fmt::Show;
 use std::io::File;
-use std::num::FloatMath;
+use std::num::{Float, FloatMath, zero};
 
 use image::GenericImage;
 
@@ -9,16 +10,16 @@ use self::point::Point;
 mod point;
 
 #[allow(dead_code)]
-fn sphere_intersect(ray: Point, center: Point, radius: f32) -> Option<f32> {
+fn sphere_intersect<T: Float + Show>(ray: Point<T>, center: Point<T>, radius: T) -> Option<T> {
     let b = -(ray.x * center.x + ray.y * center.y + ray.z * center.z);
     let det = b * b + radius * radius - center.mag2();
-    if ray.x == 0.0 && ray.y == 0.0 {
+    if ray.x == zero() && ray.y == zero() {
         println!("ray: {}", ray);
         println!("center: {}", center);
         println!("radius: {}", radius);
         println!("det: {}", det);
     }
-    if det < 0.0 {
+    if det < zero() {
         None
     } else {
         Some(b - det)
@@ -30,12 +31,12 @@ fn main() {
     let size = (80, 60);
     let (x_size, y_size) = size;
     let mut buffer = image::ImageBuf::new(x_size, y_size);
-    let camera = Point::new(0.0, 0.0, 0.0);
+    let camera = Point::new(0.0f32, 0.0, 0.0);
     let standoff = -100.0;
     let div = y_size as f32 / (standoff as f32 * FloatMath::tan(60.0));
 
     let pixel = image::Luma(255u8);
-    let center = Point::new(25.0, 0.0, -300.0);
+    let center = Point::new(25.0f32, 0.0, -300.0);
 
     for x in range(0, x_size) {
         for y in range(0, y_size) {
