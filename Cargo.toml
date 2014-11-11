@@ -1,0 +1,9 @@
+[package]
+
+name = "rust-trace"
+version = "0.0.1"
+authors = ["Tim Brooks <brooks@cern.ch>"]
+
+[dependencies.image]
+
+git = "https://github.com/PistonDevelopers/rust-image"
