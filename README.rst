@@ -5,6 +5,8 @@ A ray-tracer written in `Rust <http://rust-lang.org>`_! This is a project to
 learn the language and hopefully demonstrate the Rust language in its current
 state.
 
+I'm loosly following http://thingsiamdoing.com/intro-to-ray-tracing.
+
 Build Instructions
 -------------------
 
