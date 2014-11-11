@@ -38,3 +38,27 @@ fn triple_mag() {
     let p = Point{x: 2.0, y: 3.0, z: 6.0};
     assert!(p.mag() == 7.0);
 }
+
+#[test]
+fn null_mag2() {
+    let p = Point{x: 0.0, y: 0.0, z: 0.0};
+    assert!(p.mag2() == 0.0);
+}
+
+#[test]
+fn single_mag2() {
+    let p = Point{x: 2.0, y: 0.0, z: 0.0};
+    assert!(p.mag2() == 4.0);
+}
+
+#[test]
+fn double_mag2() {
+    let p = Point{x: 3.0, y: 4.0, z: 0.0};
+    assert!(p.mag2() == 25.0);
+}
+
+#[test]
+fn triple_mag2() {
+    let p = Point{x: 2.0, y: 3.0, z: 6.0};
+    assert!(p.mag2() == 49.0);
+}
