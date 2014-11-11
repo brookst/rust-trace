@@ -38,6 +38,6 @@ This outputs a rendering to ``ray_trace.png``.
 Commit Hooks
 ------------
 
-Under the ``scipts`` directory is a ``pre-commit`` hook to run the tests.
+In the ``scripts/`` directory is a ``pre-commit`` hook to run the tests. Also,
 ``link_scripts.sh`` symlinks scripts into the ``.git/hooks`` directory for use
 by git.
