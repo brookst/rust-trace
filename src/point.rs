@@ -1,3 +1,4 @@
+//! Basic 3D coordinate. Demonstrates testing in Rust.
 use std::num::Float;
 
 #[deriving(Show)]

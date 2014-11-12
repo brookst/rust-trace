@@ -1,11 +1,15 @@
+//! Spherical object.
 use std::fmt::Show;
 use std::num::zero;
 
 use point::Point;
 
+/// A Spherical object
 #[deriving(Show)]
 pub struct Sphere<T: Float> {
+    /// `Sphere` radius
     pub r: T,
+    /// Origin `Point` of `Sphere`
     pub center: Point<T>,
 }
 
@@ -14,6 +18,9 @@ impl<T: Float + Show> Sphere<T> {
         Sphere{r: r, center: center}
     }
 
+    /// Compute intersection of `ray` with the `Sphere`.
+    /// Returns `None` if they do not intersect or `Some(T)` with `T`
+    /// indicating the distance along `ray` at which an intersection occurs.
     pub fn intersect(&self, ray: Point<T>) -> Option<T> {
         let b = -(ray.x * self.center.x + ray.y * self.center.y + ray.z * self.center.z);
         let det = b * b + self.r * self.r - self.center.mag2();

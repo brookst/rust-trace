@@ -1,3 +1,4 @@
+//! Ray-tracer written in Rust.
 extern crate image;
 
 use std::io::File;
