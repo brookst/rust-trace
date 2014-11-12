@@ -7,6 +7,9 @@ state.
 
 I'm loosly following http://thingsiamdoing.com/intro-to-ray-tracing.
 
+.. image:: https://travis-ci.org/brookst/rust-trace.svg?branch=master
+    :target https://travis-ci.org/brookst/rust-trace
+
 Build Instructions
 -------------------
 
