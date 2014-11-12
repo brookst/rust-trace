@@ -5,7 +5,7 @@ A ray-tracer written in `Rust <http://rust-lang.org>`_! This is a project to
 learn the language and hopefully demonstrate the Rust language in its current
 state.
 
-I'm loosly following http://thingsiamdoing.com/intro-to-ray-tracing.
+I'm loosely following http://thingsiamdoing.com/intro-to-ray-tracing.
 
 .. image:: https://travis-ci.org/brookst/rust-trace.svg?branch=master
     :target: https://travis-ci.org/brookst/rust-trace
