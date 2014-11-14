@@ -23,7 +23,11 @@ fn main() {
 
     let pixel = image::Luma(255u8);
     let center = Point::new(25.0f32, 0.0, -300.0);
-    let sphere = Sphere::new(20.0f32, center);
+    let spheres = vec![
+            Sphere::new(20.0f32, center),
+            Sphere::new(10.0f32, Point::new(-25.0f32, 3.0, -280.0)),
+            Sphere::new(15.0f32, Point::new(-2.0f32, 25.0, -320.0)),
+    ];
 
     for x in range(0, x_size) {
         for y in range(0, y_size) {
@@ -31,9 +35,11 @@ fn main() {
             let ray = Point::new(start.x - camera.x, start.y - camera.y, start.z - camera.z);
             let amp = 1.0 / ray.mag();
             let norm_ray = Point::new(ray.x * amp, ray.y * amp, ray.z * amp);
-            match sphere.intersect(norm_ray) {
-                Some(_) => buffer.put_pixel(x, y, pixel),
-                None => {}
+            for sphere in spheres.iter() {
+                match sphere.intersect(norm_ray) {
+                    Some(_) => buffer.put_pixel(x, y, pixel),
+                    None => {}
+                }
             }
         }
     }
