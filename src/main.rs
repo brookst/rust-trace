@@ -22,11 +22,11 @@ fn main() {
     let standoff = -100.0;
     let div = y_size as f32 / (standoff as f32 * FloatMath::tan(60.0));
 
-    let center = Vector::new(25.0f32, 0.0, -300.0);
+    let center = Vector::new(25.0, 0.0, -300.0);
     let spheres = vec![
-            Sphere::new(20.0f32, center, (255, 0, 0)),
-            Sphere::new(10.0f32, Vector::new(-25.0f32, 3.0, -280.0), (0, 255, 0)),
-            Sphere::new(15.0f32, Vector::new(-2.0f32, 25.0, -320.0), (0, 0, 255)),
+            Sphere::new(20.0, center, (255, 0, 0)),
+            Sphere::new(10.0, Vector::new(-25.0, 3.0, -280.0), (0, 255, 0)),
+            Sphere::new(15.0, Vector::new(-2.0, 25.0, -320.0), (0, 0, 255)),
     ];
 
     for x in range(0, x_size) {
