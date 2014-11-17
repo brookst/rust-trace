@@ -1,6 +1,6 @@
 //! Spherical object.
 use std::fmt::Show;
-use std::num::zero;
+use std::num::Float;
 
 use vector::Vector;
 use shape::Shape;
@@ -35,13 +35,13 @@ impl<T: Float + Show> Shape<T> for Sphere<T> {
     fn intersect(&self, ray: Vector<T>) -> Option<T> {
         let b = -(ray.x * self.center.x + ray.y * self.center.y + ray.z * self.center.z);
         let det = b * b + self.r * self.r - self.center.mag2();
-        if ray.x == zero() && ray.y == zero() {
+        if ray.x == Float::zero() && ray.y == Float::zero() {
             println!("ray: {}", ray);
             println!("center: {}", self.center);
             println!("radius: {}", self.r);
             println!("det: {}", det);
         }
-        if det < zero() {
+        if det < Float::zero() {
             None
         } else {
             Some(b - det)
