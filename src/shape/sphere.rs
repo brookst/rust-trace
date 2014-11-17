@@ -12,14 +12,19 @@ pub struct Sphere<T: Float> {
     pub r: T,
     /// Origin `Point` of `Sphere`
     pub center: Point<T>,
+    /// Color as RGB u8 values
+    color: (u8, u8, u8),
 }
 
 impl<T: Float + Show> Sphere<T> {
-    pub fn new(r: T, center: Point<T>) -> Sphere<T> {
-        Sphere{r: r, center: center}
+    pub fn new(r: T, center: Point<T>, color: (u8, u8, u8)) -> Sphere<T> {
+        Sphere{r: r, center: center, color: color}
+    }
+    pub fn new_white(r: T, center: Point<T>) -> Sphere<T> {
+        Sphere{r: r, center: center, color: (255, 255, 255)}
     }
     pub fn get_color(&self, _: Point<T>) -> (u8, u8, u8) {
-        (255u8, 0u8, 0u8)
+        self.color
     }
 }
 
@@ -46,20 +51,20 @@ impl<T: Float + Show> Shape<T> for Sphere<T> {
 
 #[test]
 fn new_init() {
-    let s = Sphere::new(1.0f32, Point::new(0.0, 0.0, 0.0));
+    let s = Sphere::new_white(1.0f32, Point::new(0.0, 0.0, 0.0));
     assert_eq!(s.r, 1.0f32);
 }
 
 #[test]
 fn does_intersect() {
-    let s = Sphere::new(1.0f32, Point::new(0.0, 0.0, 3.0));
+    let s = Sphere::new_white(1.0f32, Point::new(0.0, 0.0, 3.0));
     let ray = Point::new(0.0f32, 0.0, 1.0);
     s.intersect(ray).unwrap();
 }
 
 #[test]
 fn doesnt_intersect() {
-    let s = Sphere::new(1.0f32, Point::new(0.0, 0.0, 3.0));
+    let s = Sphere::new_white(1.0f32, Point::new(0.0, 0.0, 3.0));
     let ray = Point::new(0.0f32, 1.0, 0.0);
     assert!(s.intersect(ray).is_none());
 }

@@ -24,9 +24,9 @@ fn main() {
 
     let center = Point::new(25.0f32, 0.0, -300.0);
     let spheres = vec![
-            Sphere::new(20.0f32, center),
-            Sphere::new(10.0f32, Point::new(-25.0f32, 3.0, -280.0)),
-            Sphere::new(15.0f32, Point::new(-2.0f32, 25.0, -320.0)),
+            Sphere::new(20.0f32, center, (255, 0, 0)),
+            Sphere::new(10.0f32, Point::new(-25.0f32, 3.0, -280.0), (0, 255, 0)),
+            Sphere::new(15.0f32, Point::new(-2.0f32, 25.0, -320.0), (0, 0, 255)),
     ];
 
     for x in range(0, x_size) {
