@@ -33,7 +33,7 @@ impl<T: Float + Show> Shape<T> for Sphere<T> {
     /// Returns `None` if they do not intersect or `Some(T)` with `T`
     /// indicating the distance along `ray` at which an intersection occurs.
     fn intersect(&self, ray: Vector<T>) -> Option<T> {
-        let b = -(ray.x * self.center.x + ray.y * self.center.y + ray.z * self.center.z);
+        let b = ray.x * self.center.x + ray.y * self.center.y + ray.z * self.center.z;
         let det = b * b + self.r * self.r - self.center.mag2();
         if ray.x == Float::zero() && ray.y == Float::zero() {
             println!("ray: {}", ray);
@@ -44,7 +44,7 @@ impl<T: Float + Show> Shape<T> for Sphere<T> {
         if det < Float::zero() {
             None
         } else {
-            Some(b - det)
+            Some(b - det.sqrt())
         }
     }
 }
@@ -59,7 +59,29 @@ fn new_init() {
 fn does_intersect() {
     let s = Sphere::new_white(1.0f32, Vector::new(0.0, 0.0, 3.0));
     let ray = Vector::new(0.0f32, 0.0, 1.0);
-    s.intersect(ray).unwrap();
+    assert!(s.intersect(ray).is_some());
+}
+
+#[test]
+fn intersect_length_null() {
+    let s = Sphere::new_white(0.0f32, Vector::new(0.0, 0.0, 3.0));
+    let ray = Vector::new(0.0f32, 0.0, 1.0);
+    assert_eq!(s.intersect(ray).unwrap(), 3.0);
+}
+
+#[test]
+fn intersect_length() {
+    let s = Sphere::new_white(1.0f32, Vector::new(0.0, 0.0, 3.0));
+    let ray = Vector::new(0.0f32, 0.0, 1.0);
+    assert_eq!(s.intersect(ray).unwrap(), 2.0);
+}
+
+#[test]
+/// Origin inside `Sphere`!
+fn intersect_length_behind() {
+    let s = Sphere::new_white(4.0f32, Vector::new(0.0, 0.0, 3.0));
+    let ray = Vector::new(0.0f32, 0.0, 1.0);
+    assert_eq!(s.intersect(ray).unwrap(), -1.0);
 }
 
 #[test]
