@@ -18,6 +18,9 @@ impl<T: Float + Show> Sphere<T> {
     pub fn new(r: T, center: Point<T>) -> Sphere<T> {
         Sphere{r: r, center: center}
     }
+    pub fn get_color(&self, _: Point<T>) -> (u8, u8, u8) {
+        (255u8, 0u8, 0u8)
+    }
 }
 
 impl<T: Float + Show> Shape<T> for Sphere<T> {

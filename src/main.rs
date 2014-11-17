@@ -22,7 +22,6 @@ fn main() {
     let standoff = -100.0;
     let div = y_size as f32 / (standoff as f32 * FloatMath::tan(60.0));
 
-    let pixel = image::Luma(255u8);
     let center = Point::new(25.0f32, 0.0, -300.0);
     let spheres = vec![
             Sphere::new(20.0f32, center),
@@ -38,7 +37,10 @@ fn main() {
             let norm_ray = Point::new(ray.x * amp, ray.y * amp, ray.z * amp);
             for sphere in spheres.iter() {
                 match sphere.intersect(norm_ray) {
-                    Some(_) => buffer.put_pixel(x, y, pixel),
+                    Some(_) => {
+                        let (r, g, b) = sphere.get_color(norm_ray);
+                        buffer.put_pixel(x, y, image::Rgb(r, g, b))
+                    },
                     None => {}
                 }
             }
@@ -52,7 +54,7 @@ fn main() {
             std::os::set_exit_status(1);
         },
         Ok(output) => {
-            let _ = image::ImageLuma8(buffer).save(output, image::PNG);
+            let _ = image::ImageRgb8(buffer).save(output, image::PNG);
         }
     }
 }
