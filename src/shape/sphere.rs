@@ -3,6 +3,7 @@ use std::fmt::Show;
 use std::num::zero;
 
 use point::Point;
+use shape::Shape;
 
 /// A Spherical object
 #[deriving(Show)]
@@ -17,11 +18,13 @@ impl<T: Float + Show> Sphere<T> {
     pub fn new(r: T, center: Point<T>) -> Sphere<T> {
         Sphere{r: r, center: center}
     }
+}
 
+impl<T: Float + Show> Shape<T> for Sphere<T> {
     /// Compute intersection of `ray` with the `Sphere`.
     /// Returns `None` if they do not intersect or `Some(T)` with `T`
     /// indicating the distance along `ray` at which an intersection occurs.
-    pub fn intersect(&self, ray: Point<T>) -> Option<T> {
+    fn intersect(&self, ray: Point<T>) -> Option<T> {
         let b = -(ray.x * self.center.x + ray.y * self.center.y + ray.z * self.center.z);
         let det = b * b + self.r * self.r - self.center.mag2();
         if ray.x == zero() && ray.y == zero() {

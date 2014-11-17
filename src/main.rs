@@ -8,6 +8,7 @@ use image::GenericImage;
 
 use self::point::Point;
 use self::shape::sphere::Sphere;
+use self::shape::Shape;
 
 pub mod point;
 pub mod shape;
