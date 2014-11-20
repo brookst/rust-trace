@@ -1,1 +1,13 @@
 language: rust
+
+env:
+  global:
+    - secure: H7mSH+fNCgZzdaLD2wD0RHpurUF6LpK2YCQfvue9MhRdL5fIsQxVwcH8H7LKzYn2dEegsjxEH4r47s3eJjE/nOojLIKXIfIFormliZqiBN7DbkcA1qqGjWS2CkVFdrIkONxBHXlXPdXtvu6RmFCUzg4MfMYT8sYwp2ihIXvA4pU=
+
+script:
+  - cargo build --verbose
+  - cargo test --verbose
+  - cargo doc --verbose
+
+after_success:
+  - '[ "${TRAVIS_PULL_REQUEST}" = "false" ] && curl http://www.rust-ci.org/artifacts/put?t=$RUSTCI_TOKEN | sh'
