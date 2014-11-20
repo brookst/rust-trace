@@ -7,8 +7,14 @@ state.
 
 I'm loosely following http://thingsiamdoing.com/intro-to-ray-tracing.
 
+The project is hosted on `github`_, built on `travis-ci`_, and listed on `rust-ci`_. Documentation is available at http://rust-ci.org/brookst/rust-trace/doc/rust-trace/.
+
 .. image:: https://travis-ci.org/brookst/rust-trace.svg?branch=master
     :target: https://travis-ci.org/brookst/rust-trace
+
+.. _github: https://github.com/brookst/rust-trace
+.. _travis-ci: https://travis-ci.org/brookst/rust-trace
+.. _rust-ci: http://rust-ci.org/brookst/rust-trace
 
 Build Instructions
 -------------------
