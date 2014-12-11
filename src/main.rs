@@ -17,7 +17,7 @@ pub mod shape;
 fn main() {
     let size = (80, 60);
     let (x_size, y_size) = size;
-    let mut buffer = image::ImageBuf::new(x_size, y_size);
+    let mut buffer = image::ImageBuffer::new(x_size, y_size);
     let camera = Vector::new(0.0f32, 0.0, 0.0);
     let standoff = -100.0;
     let div = y_size as f32 / (standoff as f32 * FloatMath::tan(60.0));
@@ -39,7 +39,7 @@ fn main() {
                 match sphere.intersect(norm_ray) {
                     Some(_) => {
                         let (r, g, b) = sphere.get_color(norm_ray);
-                        buffer.put_pixel(x, y, image::Rgb(r, g, b))
+                        buffer.put_pixel(x, y, image::Rgb([r, g, b]))
                     },
                     None => {}
                 }
