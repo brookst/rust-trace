@@ -36,9 +36,9 @@ fn main() {
             let amp = 1.0 / ray.mag();
             let norm_ray = Vector::new(ray.x * amp, ray.y * amp, ray.z * amp);
             for sphere in spheres.iter() {
-                match sphere.intersect(norm_ray) {
+                match sphere.intersect(norm_ray.clone()) {
                     Some(_) => {
-                        let (r, g, b) = sphere.get_color(norm_ray);
+                        let (r, g, b) = sphere.get_color(norm_ray.clone());
                         buffer.put_pixel(x, y, image::Rgb([r, g, b]))
                     },
                     None => {}
