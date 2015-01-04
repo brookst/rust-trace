@@ -1,7 +1,7 @@
 //! Basic 3D vector. Demonstrates testing in Rust.
 use std::num::Float;
 
-#[deriving(Clone,Show)]
+#[derive(Clone,Show)]
 pub struct Vector<T: Float> {
     pub x: T,
     pub y: T,

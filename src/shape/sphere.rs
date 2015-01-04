@@ -6,7 +6,7 @@ use vector::Vector;
 use shape::Shape;
 
 /// A Spherical object
-#[deriving(Show)]
+#[derive(Show)]
 pub struct Sphere<T: Float> {
     /// `Sphere` radius
     pub r: T,
