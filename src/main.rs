@@ -29,8 +29,8 @@ fn main() {
             Sphere::new(15.0, Vector::new(-2.0, 25.0, -320.0), (0, 0, 255)),
     ];
 
-    for x in range(0, x_size) {
-        for y in range(0, y_size) {
+    for x in (0..x_size) {
+        for y in (0..y_size) {
             let start = Vector::new((x as f32 - x_size as f32 / 2.0) / div, (y as f32 - y_size as f32 / 2.0) / div, standoff);
             let ray = Vector::new(start.x - camera.x, start.y - camera.y, start.z - camera.z);
             let amp = 1.0 / ray.mag();
