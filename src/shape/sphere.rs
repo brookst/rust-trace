@@ -36,10 +36,10 @@ impl<T: Float + Show> Shape<T> for Sphere<T> {
         let b = ray.x * self.center.x + ray.y * self.center.y + ray.z * self.center.z;
         let det = b * b + self.r * self.r - self.center.mag2();
         if ray.x == Float::zero() && ray.y == Float::zero() {
-            println!("ray: {}", ray);
-            println!("center: {}", self.center);
-            println!("radius: {}", self.r);
-            println!("det: {}", det);
+            println!("ray: {:?}", ray);
+            println!("center: {:?}", self.center);
+            println!("radius: {:?}", self.r);
+            println!("det: {:?}", det);
         }
         if det < Float::zero() {
             None
