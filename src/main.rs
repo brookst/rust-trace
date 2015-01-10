@@ -1,4 +1,5 @@
 //! Ray-tracer written in Rust.
+#![allow(unstable)]
 extern crate image;
 
 use std::io::File;
