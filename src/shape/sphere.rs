@@ -1,5 +1,5 @@
 //! Spherical object.
-use std::fmt::Show;
+use std::fmt::Debug;
 use std::num::Float;
 
 use vector::Vector;
@@ -16,7 +16,7 @@ pub struct Sphere<T: Float> {
     color: (u8, u8, u8),
 }
 
-impl<T: Float + Show> Sphere<T> {
+impl<T: Float + Debug> Sphere<T> {
     pub fn new(r: T, center: Vector<T>, color: (u8, u8, u8)) -> Sphere<T> {
         Sphere{r: r, center: center, color: color}
     }
@@ -28,7 +28,7 @@ impl<T: Float + Show> Sphere<T> {
     }
 }
 
-impl<T: Float + Show> Shape<T> for Sphere<T> {
+impl<T: Float + Debug> Shape<T> for Sphere<T> {
     /// Compute intersection of `ray` with the `Sphere`.
     /// Returns `None` if they do not intersect or `Some(T)` with `T`
     /// indicating the distance along `ray` at which an intersection occurs.
