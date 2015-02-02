@@ -1,8 +1,8 @@
 //! Ray-tracer written in Rust.
-#![allow(unstable)]
+#![feature(io, os, core, std_misc, path)]
 extern crate image;
 
-use std::io::File;
+use std::old_io::File;
 use std::num::Float;
 
 use image::GenericImage;
@@ -20,8 +20,8 @@ fn main() {
     let (x_size, y_size) = size;
     let mut buffer = image::ImageBuffer::new(x_size, y_size);
     let camera = Vector::new(0.0f32, 0.0, 0.0);
-    let standoff = -100.0;
-    let div = y_size as f32 / (standoff as f32 * Float::tan(60.0));
+    let standoff = -100.0f32;
+    let div = y_size as f32 / (standoff * Float::tan(60.0));
 
     let center = Vector::new(25.0, 0.0, -300.0);
     let spheres = vec![
