@@ -54,8 +54,8 @@ fn main() {
             println!("Failed {}", why);
             std::os::set_exit_status(1);
         },
-        Ok(output) => {
-            let _ = image::ImageRgb8(buffer).save(output, image::PNG);
+        Ok(mut output) => {
+            let _ = image::ImageRgb8(buffer).save(&mut output, image::PNG);
         }
     }
 }
