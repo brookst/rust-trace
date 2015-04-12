@@ -1,8 +1,9 @@
 //! Ray-tracer written in Rust.
-#![feature(env, std_misc, old_io, old_path)]
+#![feature(exit_status, std_misc)]
 extern crate image;
 
-use std::old_io::File;
+use std::fs::File;
+use std::path::Path;
 use std::num::Float;
 use std::env::set_exit_status;
 
