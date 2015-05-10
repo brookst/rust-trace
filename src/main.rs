@@ -1,10 +1,11 @@
 //! Ray-tracer written in Rust.
-#![feature(exit_status, std_misc)]
+#![feature(exit_status)]
 extern crate image;
+extern crate num;
 
 use std::fs::File;
 use std::path::Path;
-use std::num::Float;
+use num::traits::Float;
 use std::env::set_exit_status;
 
 use self::vector::Vector;

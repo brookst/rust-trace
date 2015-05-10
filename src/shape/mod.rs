@@ -1,6 +1,6 @@
 //! Shapes to be used in the scene.
 use vector::Vector;
-use std::num::Float;
+use num::traits::Float;
 
 /// Trait for scene objects
 pub trait Shape<T: Float> {

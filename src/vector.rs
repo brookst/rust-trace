@@ -1,5 +1,5 @@
 //! Basic 3D vector. Demonstrates testing in Rust.
-use std::num::Float;
+use num::traits::Float;
 
 #[derive(Clone, Debug)]
 pub struct Vector<T: Float> {
