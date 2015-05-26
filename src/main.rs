@@ -1,12 +1,11 @@
 //! Ray-tracer written in Rust.
-#![feature(exit_status)]
 extern crate image;
 extern crate num;
 
 use std::fs::File;
 use std::path::Path;
 use num::traits::Float;
-use std::env::set_exit_status;
+use std::process::exit;
 
 use self::vector::Vector;
 use self::shape::sphere::Sphere;
@@ -53,7 +52,7 @@ fn main() {
     match output {
         Err(why) => {
             println!("Failed {}", why);
-            set_exit_status(1);
+            exit(1);
         },
         Ok(mut output) => {
             let _ = image::ImageRgb8(buffer).save(&mut output, image::PNG);
