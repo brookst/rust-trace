@@ -10,7 +10,7 @@ pub struct Vector<T: Float> {
 
 impl<T: Float> Vector<T> {
     pub fn new(x: T, y: T, z: T) -> Vector<T> {
-        Vector{x: x, y: y, z: z}
+        Vector{x, y, z}
     }
 
     pub fn mag(&self) -> T {

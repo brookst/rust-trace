@@ -19,10 +19,10 @@ pub struct Sphere<T: Float> {
 
 impl<T: Float + Debug> Sphere<T> {
     pub fn new(r: T, center: Vector<T>, color: (u8, u8, u8)) -> Sphere<T> {
-        Sphere{r: r, center: center, color: color}
+        Sphere{r, center, color}
     }
     pub fn new_white(r: T, center: Vector<T>) -> Sphere<T> {
-        Sphere{r: r, center: center, color: (255, 255, 255)}
+        Sphere{r, center, color: (255, 255, 255)}
     }
     pub fn get_color(&self, _: Vector<T>) -> (u8, u8, u8) {
         self.color
