@@ -6,7 +6,4 @@ authors = ["Tim Brooks <brooks@cern.ch>"]
 
 [dependencies]
 num = "*"
-
-[dependencies.image]
-
-git = "https://github.com/PistonDevelopers/rust-image"
+image = "*"

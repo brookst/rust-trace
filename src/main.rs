@@ -2,10 +2,8 @@
 extern crate image;
 extern crate num;
 
-use std::fs::File;
 use std::path::Path;
 use num::traits::Float;
-use std::process::exit;
 
 use self::vector::Vector;
 use self::shape::sphere::Sphere;
@@ -48,14 +46,6 @@ fn main() {
         }
     }
 
-    let output = File::create(&Path::new("ray_trace.png"));
-    match output {
-        Err(why) => {
-            println!("Failed {}", why);
-            exit(1);
-        },
-        Ok(mut output) => {
-            let _ = image::ImageRgb8(buffer).save(&mut output, image::PNG);
-        }
-    }
+    let output = &Path::new("ray_trace.png");
+    let _ = image::ImageRgb8(buffer).save(output);
 }
